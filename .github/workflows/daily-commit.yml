@@ -22,9 +22,9 @@ jobs:
 
       - name: Create Commit
         run: |
-          # Pehle remote changes ko pull karein taaki sync bana rahe
-          git pull origin main --rebase
+          # Fetch and merge remote changes to prevent push rejection
+          git pull origin main --rebase --autostash
           echo "Daily update: $(date)" >> automation_log.txt
           git add automation_log.txt
           git commit -m "Automated daily update: $(date)"
-          git push
+          git push origin main
