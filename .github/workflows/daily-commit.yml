@@ -10,12 +10,17 @@ on:
 jobs:
   auto-commit:
     runs-on: ubuntu-latest
+    # Yeh permissions block add karna zaroori hai
+    permissions:
+      contents: write
+      
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
       - name: Setup Committer (23f2004968@ds.study.iitm.ac.in)
         run: |
+          git config --global user.email "23f2004968@ds.study.iitm.ac.in"
           git config --global user.email "23f2004968@ds.study.iitm.ac.in"
           git config --global user.name "GitHub Action Bot"
 
